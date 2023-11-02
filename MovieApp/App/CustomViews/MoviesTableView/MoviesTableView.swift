@@ -90,8 +90,6 @@ extension MoviesTableView: UITableViewDataSource {
         let movieAverage = movie.voteAverage
         cell!.voteAverageLabel.text = "\(String(format: "%.1f", movieAverage)) / 10 "
         
-        
-        
         viewModel.loadImage(path: movie.posterImagePath) { image in
             DispatchQueue.main.async {
                 cell!.movieImageView.image = image
@@ -115,7 +113,7 @@ extension MoviesTableView: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == viewModel.count - 4 {
+        if indexPath.row == viewModel.count - 3 {
             viewModel.fetchMovies()
         }
     }

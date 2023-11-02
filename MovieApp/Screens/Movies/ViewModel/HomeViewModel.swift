@@ -32,6 +32,9 @@ class HomeViewModel: MovieViewModelType {
         fetchMovies()
     }
     
+    func fetchMovieCoreDate(){
+        self.movies = CoreDataManager.fetchPopulerMovies().results
+    }
     func getMovie(at idx: Int) -> Movie {
         return movies[idx]
     }
@@ -40,7 +43,7 @@ class HomeViewModel: MovieViewModelType {
         return movies.count
     }
     
-    func loadImage (path: String, completion: @escaping (UIImage?) -> Void) -> Void {
+    func loadImage (path: String, completion: @escaping (UIImage?) -> Void) {
         apiManager.loadImage (path) { (result) in
             switch result {
             case .success (let image):
@@ -53,12 +56,13 @@ class HomeViewModel: MovieViewModelType {
     }
     
     func fetchMovies() {
-        if currentPage < 5 {
+        if currentPage < 6 {
             currentPage += 1
             self.apiManager.fetchMovies(byPage: currentPage) { (result) in
                 switch result {
                 case .success(let movie):
                     self.movies.append(contentsOf: movie.results)
+                    CoreDataManager.saveContext(movies: movie)
                 case .failure(let error):
                     print("Error: \(error)")
                 }}}

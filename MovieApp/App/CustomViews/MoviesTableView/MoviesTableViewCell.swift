@@ -19,6 +19,7 @@ class MoviesTableViewCell : UITableViewCell{
     let starImageView = UIImageView()
     let voteAverageLabel = UILabel()
     
+    
     static let identifier = "MoviesCell"
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         configureWindow(destinationVC: HomeVC())
-
+        CoreDataManager.fetchPopulerMovies()
         return true
     }
 

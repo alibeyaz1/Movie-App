@@ -14,6 +14,7 @@ protocol MovieViewModelDelegate: AnyObject {
 protocol ViewModelType {
     func bootstrap()
     func fetchMovies()
+    func fetchMovieCoreDate()
     func getMovie(at idx: Int) -> Movie
     var count: Int { get }
     

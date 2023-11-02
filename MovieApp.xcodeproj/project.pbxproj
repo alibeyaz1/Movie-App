@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D0C17A12AF4364900261664 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7D0C17A02AF4364900261664 /* SnapKit */; };
+		7D0C17A32AF4364900261664 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 7D0C17A22AF4364900261664 /* SnapKit-Dynamic */; };
 		7D3939B42AF26F1900F1729E /* Movies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3939B32AF26F1900F1729E /* Movies.swift */; };
 		7D3939B72AF2720A00F1729E /* MoviesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3939B62AF2720A00F1729E /* MoviesTableViewCell.swift */; };
 		7D3939BE2AF286D000F1729E /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3939BD2AF286D000F1729E /* EndPoint.swift */; };
@@ -15,6 +17,7 @@
 		7D3939C72AF2A4D300F1729E /* MoviesTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3939C62AF2A4D300F1729E /* MoviesTableView.swift */; };
 		7D3939C92AF2CCFB00F1729E /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3939C82AF2CCFB00F1729E /* HeaderView.swift */; };
 		7D3939CB2AF2D35900F1729E /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3939CA2AF2D35900F1729E /* CustomButton.swift */; };
+		7DC2FCC02AF31F9F005DF5F5 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC2FCBF2AF31F9F005DF5F5 /* CoreDataManager.swift */; };
 		7DE38A5C2AF2663C002D4C8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE38A5B2AF2663C002D4C8A /* AppDelegate.swift */; };
 		7DE38A602AF2663C002D4C8A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE38A5F2AF2663C002D4C8A /* ViewController.swift */; };
 		7DE38A662AF2663C002D4C8A /* MovieApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7DE38A642AF2663C002D4C8A /* MovieApp.xcdatamodeld */; };
@@ -24,8 +27,6 @@
 		7DE38A7E2AF26880002D4C8A /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE38A7D2AF26880002D4C8A /* HomeViewModel.swift */; };
 		7DE38A802AF26895002D4C8A /* MovieDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE38A7F2AF26895002D4C8A /* MovieDetailsVC.swift */; };
 		7DE38A832AF268BA002D4C8A /* MovieDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE38A822AF268BA002D4C8A /* MovieDetailsViewModel.swift */; };
-		7DE38A862AF26BE4002D4C8A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7DE38A852AF26BE4002D4C8A /* SnapKit */; };
-		7DE38A882AF26BE4002D4C8A /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 7DE38A872AF26BE4002D4C8A /* SnapKit-Dynamic */; };
 		7DE38A8B2AF26BF0002D4C8A /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 7DE38A8A2AF26BF0002D4C8A /* Alamofire */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +39,7 @@
 		7D3939C62AF2A4D300F1729E /* MoviesTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesTableView.swift; sourceTree = "<group>"; };
 		7D3939C82AF2CCFB00F1729E /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		7D3939CA2AF2D35900F1729E /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		7DC2FCBF2AF31F9F005DF5F5 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		7DE38A582AF2663C002D4C8A /* MovieApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DE38A5B2AF2663C002D4C8A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7DE38A5F2AF2663C002D4C8A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -57,8 +59,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7DE38A8B2AF26BF0002D4C8A /* Alamofire in Frameworks */,
-				7DE38A862AF26BE4002D4C8A /* SnapKit in Frameworks */,
-				7DE38A882AF26BE4002D4C8A /* SnapKit-Dynamic in Frameworks */,
+				7D0C17A12AF4364900261664 /* SnapKit in Frameworks */,
+				7D0C17A32AF4364900261664 /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +81,7 @@
 			children = (
 				7D3939BD2AF286D000F1729E /* EndPoint.swift */,
 				7D3939C02AF2887D00F1729E /* APIManager.swift */,
+				7DC2FCBF2AF31F9F005DF5F5 /* CoreDataManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -219,9 +222,9 @@
 			);
 			name = MovieApp;
 			packageProductDependencies = (
-				7DE38A852AF26BE4002D4C8A /* SnapKit */,
-				7DE38A872AF26BE4002D4C8A /* SnapKit-Dynamic */,
 				7DE38A8A2AF26BF0002D4C8A /* Alamofire */,
+				7D0C17A02AF4364900261664 /* SnapKit */,
+				7D0C17A22AF4364900261664 /* SnapKit-Dynamic */,
 			);
 			productName = MovieApp;
 			productReference = 7DE38A582AF2663C002D4C8A /* MovieApp.app */;
@@ -252,8 +255,8 @@
 			);
 			mainGroup = 7DE38A4F2AF2663C002D4C8A;
 			packageReferences = (
-				7DE38A842AF26BE4002D4C8A /* XCRemoteSwiftPackageReference "SnapKit" */,
 				7DE38A892AF26BF0002D4C8A /* XCRemoteSwiftPackageReference "Alamofire" */,
+				7D0C179F2AF4364900261664 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 7DE38A592AF2663C002D4C8A /* Products */;
 			projectDirPath = "";
@@ -295,6 +298,7 @@
 				7D3939BE2AF286D000F1729E /* EndPoint.swift in Sources */,
 				7DE38A7E2AF26880002D4C8A /* HomeViewModel.swift in Sources */,
 				7DE38A662AF2663C002D4C8A /* MovieApp.xcdatamodeld in Sources */,
+				7DC2FCC02AF31F9F005DF5F5 /* CoreDataManager.swift in Sources */,
 				7D3939C92AF2CCFB00F1729E /* HeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -365,7 +369,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -422,7 +426,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -437,6 +441,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = Q876622H6W;
@@ -453,6 +458,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.alibeyaz.MovieApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -464,6 +470,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = Q876622H6W;
@@ -480,6 +487,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.alibeyaz.MovieApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -510,7 +518,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		7DE38A842AF26BE4002D4C8A /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+		7D0C179F2AF4364900261664 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
 			requirement = {
@@ -529,14 +537,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		7DE38A852AF26BE4002D4C8A /* SnapKit */ = {
+		7D0C17A02AF4364900261664 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 7DE38A842AF26BE4002D4C8A /* XCRemoteSwiftPackageReference "SnapKit" */;
+			package = 7D0C179F2AF4364900261664 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
 		};
-		7DE38A872AF26BE4002D4C8A /* SnapKit-Dynamic */ = {
+		7D0C17A22AF4364900261664 /* SnapKit-Dynamic */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 7DE38A842AF26BE4002D4C8A /* XCRemoteSwiftPackageReference "SnapKit" */;
+			package = 7D0C179F2AF4364900261664 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = "SnapKit-Dynamic";
 		};
 		7DE38A8A2AF26BF0002D4C8A /* Alamofire */ = {

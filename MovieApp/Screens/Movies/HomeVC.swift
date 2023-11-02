@@ -25,6 +25,7 @@ class HomeVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.fetchMovieCoreDate()
         setupViews()
     }
     

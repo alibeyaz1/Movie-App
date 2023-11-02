@@ -12,14 +12,14 @@ import Alamofire
 protocol APIManagerProtocol {
     
     func fetchMovies(byPage page: Int, completion: @escaping (Result<Movies, Error>) -> Void)
-    func loadImage(_ url: String, _ completion: @escaping(Result<UIImage,Error>) -> Void ) -> Void
+    func loadImage(_ url: String, _ completion: @escaping(Result<UIImage,Error>) -> Void )
 }
 
 class APIManager: APIManagerProtocol {
     
     private var movieImages = [String: UIImage]()
     
-    func loadImage(_ path: String, _ completion: @escaping(Result<UIImage,Error>) -> Void ) -> Void {
+    func loadImage(_ path: String, _ completion: @escaping(Result<UIImage,Error>) -> Void ) {
         let urlString = endPoint.urlStringForImages(path)
         
         if let image = movieImages[urlString] {
@@ -46,8 +46,8 @@ class APIManager: APIManagerProtocol {
     private var endPoint = EndPoint()
     
     func fetchMovies(byPage page: Int, completion: @escaping (Result<Movies, Error>) -> Void) {
-        let url = endPoint.urlStringForMovies(page)
-        executeRequest(url: url, onSuccess: completion)
+                let url = endPoint.urlStringForMovies(page)
+                executeRequest(url: url, onSuccess: completion)
     }
     
     
@@ -55,13 +55,20 @@ class APIManager: APIManagerProtocol {
         AF.request(url)
             .validate()
             .responseDecodable(of: Movies.self, queue: .main, decoder: JSONDecoder()) { (response) in
+                
                 switch response.result {
                 case .success(let data):
+                    CoreDataManager.deleteAllMovies()
+                                    CoreDataManager.saveContext(movies: data)
                     onSuccess(.success(data))
                 case .failure(let error):
                     onSuccess(.failure(error))
+                    CoreDataManager.fetchPopulerMovies()
                 }
                 
             }
         
-    }}
+        
+    }
+    
+}
