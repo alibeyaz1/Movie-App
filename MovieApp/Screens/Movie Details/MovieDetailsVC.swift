@@ -11,26 +11,30 @@ class MovieDetailsVC: UIViewController {
     
     var movie: Movie?
     let header = HeaderView(title: "")
+    let moviePoster = UIImageView()
+    let overview = UILabel()
+    let apiManager: APIManager?
     
+    init(apiManager: APIManager?) {
+        self.apiManager = apiManager
+        super.init(nibName: nil, bundle: nil)
+    }
     
-    let movieTitle: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = .center
-        label.textColor = .black
-        label.font = UIFont.systemFont(ofSize: 25)
-        label.lineBreakMode = .byWordWrapping
-        label.numberOfLines = 2
-        label.adjustsFontSizeToFitWidth = true
-        return label
-    }()
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         
         if let movie = movie {
-            movieTitle.text = movie.title
+            overview.text = movie.overview
+            loadImage(path: movie.backdropPath) { image in
+                DispatchQueue.main.async {
+                    self.moviePoster.image = image
+                }
+            }
         }
         
         setupView()
@@ -44,15 +48,37 @@ class MovieDetailsVC: UIViewController {
             make.left.right.equalToSuperview()
             make.top.equalToSuperview()
             
-            
         }
-        view.addSubview(movieTitle)
+        moviePoster.contentMode = .scaleAspectFit
+        view.addSubview(moviePoster)
         
-        movieTitle.snp.makeConstraints { make in
-            make.top.equalTo(header.snp.bottom)
-            make.center.equalToSuperview()
+        moviePoster.snp.makeConstraints { make in
+            make.top.equalTo(header.snp.bottom).offset(10)
+            make.left.right.equalToSuperview()
+            make.height.equalToSuperview().multipliedBy(0.3)
         }
         
+        
+        overview.numberOfLines = 0
+        overview.font = UIFont.systemFont(ofSize: 16)
+        view.addSubview(overview)
+        overview.snp.makeConstraints { make in
+            make.top.equalTo(moviePoster.snp.bottom).offset(10)
+            make.left.right.equalToSuperview().inset(20)
+        }
+        
+    }
+    
+    func loadImage (path: String, completion: @escaping (UIImage?) -> Void) {
+        apiManager?.loadImage(path) { (result) in
+            switch result {
+            case .success (let image):
+                completion (image)
+            case .failure(let error):
+                print("Error: \(error)")
+                completion(nil)
+            }
+        }
     }
     
 }

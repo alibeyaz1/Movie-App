@@ -7,12 +7,11 @@
 
 
 import UIKit
+import Reachability
 
 class MoviesTableView: UIView {
     
     weak var delegate: MovieListItemDelegate?
-    
-    
     var viewModel: HomeViewModel
     
     
@@ -113,9 +112,15 @@ extension MoviesTableView: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == viewModel.count - 3 {
-            viewModel.fetchMovies()
+        
+        if indexPath.row == viewModel.count - 3  {
+            let reach = try! Reachability()
+            if  reach.connection != .unavailable {
+                viewModel.fetchMovies()
+            }
+            
         }
+        
     }
     
 }

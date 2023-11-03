@@ -8,8 +8,11 @@
 import Foundation
 import UIKit
 import SnapKit
+import Reachability
 
 class HomeVC: UIViewController {
+    
+    // MARK: - Properties
     
     var viewModel: MovieViewModelType = HomeViewModel(apiManager: APIManager())
     let header = HeaderView(title: "MovieLIST")
@@ -22,13 +25,23 @@ class HomeVC: UIViewController {
     
     let addButton = CustomGradientButton(title: "Add", icon: UIImage(systemName: "plus"))
     
+    // MARK: - View Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.fetchMovieCoreDate()
+        
+        let reach = try! Reachability()
+        
+        if  reach.connection == .unavailable {
+            viewModel.fetchMovieCoreDate()
+            
+        } else {
+            
+        }
         setupViews()
     }
     
+    // MARK: - View Setup
     
     func setupViews(){
         
@@ -37,15 +50,12 @@ class HomeVC: UIViewController {
         header.snp.makeConstraints { make in
             make.left.right.equalToSuperview()
             make.top.equalToSuperview()
-            
-            
         }
         view.addSubview(movieTableView)
         movieTableView.snp.makeConstraints { make in
             make.top.equalTo(header.snp.bottom)
             make.bottom.left.right.equalToSuperview()
         }
-        
         
         view.addSubview(addButton)
         view.bringSubviewToFront(addButton)
@@ -55,13 +65,13 @@ class HomeVC: UIViewController {
             make.height.equalToSuperview().multipliedBy(0.06)
         }
     }
-    
-    
 }
+
+// MARK: - MovieListItemDelegate
 
 extension HomeVC: MovieListItemDelegate {
     func selectedMovie(movie: Movie) {
-        let vc = MovieDetailsVC()
+        let vc = MovieDetailsVC(apiManager: APIManager())
         vc.movie = movie
         vc.header.titleLabel.text = movie.title
         vc.header.backAction = {

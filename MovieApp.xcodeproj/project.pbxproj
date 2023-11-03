@@ -17,9 +17,10 @@
 		7D3939C72AF2A4D300F1729E /* MoviesTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3939C62AF2A4D300F1729E /* MoviesTableView.swift */; };
 		7D3939C92AF2CCFB00F1729E /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3939C82AF2CCFB00F1729E /* HeaderView.swift */; };
 		7D3939CB2AF2D35900F1729E /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3939CA2AF2D35900F1729E /* CustomButton.swift */; };
+		7DB889D42AF524A300774446 /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = 7DB889D32AF524A300774446 /* Reachability */; };
+		7DB889D62AF5693B00774446 /* HomeDetailsContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB889D52AF5693B00774446 /* HomeDetailsContracts.swift */; };
 		7DC2FCC02AF31F9F005DF5F5 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC2FCBF2AF31F9F005DF5F5 /* CoreDataManager.swift */; };
 		7DE38A5C2AF2663C002D4C8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE38A5B2AF2663C002D4C8A /* AppDelegate.swift */; };
-		7DE38A602AF2663C002D4C8A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE38A5F2AF2663C002D4C8A /* ViewController.swift */; };
 		7DE38A662AF2663C002D4C8A /* MovieApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7DE38A642AF2663C002D4C8A /* MovieApp.xcdatamodeld */; };
 		7DE38A682AF2663E002D4C8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DE38A672AF2663E002D4C8A /* Assets.xcassets */; };
 		7DE38A6B2AF2663E002D4C8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DE38A692AF2663E002D4C8A /* LaunchScreen.storyboard */; };
@@ -39,10 +40,10 @@
 		7D3939C62AF2A4D300F1729E /* MoviesTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesTableView.swift; sourceTree = "<group>"; };
 		7D3939C82AF2CCFB00F1729E /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		7D3939CA2AF2D35900F1729E /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		7DB889D52AF5693B00774446 /* HomeDetailsContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailsContracts.swift; sourceTree = "<group>"; };
 		7DC2FCBF2AF31F9F005DF5F5 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		7DE38A582AF2663C002D4C8A /* MovieApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DE38A5B2AF2663C002D4C8A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7DE38A5F2AF2663C002D4C8A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7DE38A652AF2663C002D4C8A /* MovieApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MovieApp.xcdatamodel; sourceTree = "<group>"; };
 		7DE38A672AF2663E002D4C8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7DE38A6A2AF2663E002D4C8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -59,6 +60,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7DE38A8B2AF26BF0002D4C8A /* Alamofire in Frameworks */,
+				7DB889D42AF524A300774446 /* Reachability in Frameworks */,
 				7D0C17A12AF4364900261664 /* SnapKit in Frameworks */,
 				7D0C17A32AF4364900261664 /* SnapKit-Dynamic in Frameworks */,
 			);
@@ -108,7 +110,6 @@
 				7DE38A752AF2677D002D4C8A /* App */,
 				7DE38A762AF26785002D4C8A /* Screens */,
 				7DE38A742AF2675B002D4C8A /* Resources */,
-				7DE38A5F2AF2663C002D4C8A /* ViewController.swift */,
 			);
 			path = MovieApp;
 			sourceTree = "<group>";
@@ -183,8 +184,9 @@
 		7DE38A7B2AF2684A002D4C8A /* Movie Details */ = {
 			isa = PBXGroup;
 			children = (
-				7DE38A812AF2689C002D4C8A /* ViewModel */,
 				7DE38A7F2AF26895002D4C8A /* MovieDetailsVC.swift */,
+				7DE38A812AF2689C002D4C8A /* ViewModel */,
+				7DB889D52AF5693B00774446 /* HomeDetailsContracts.swift */,
 			);
 			path = "Movie Details";
 			sourceTree = "<group>";
@@ -225,6 +227,7 @@
 				7DE38A8A2AF26BF0002D4C8A /* Alamofire */,
 				7D0C17A02AF4364900261664 /* SnapKit */,
 				7D0C17A22AF4364900261664 /* SnapKit-Dynamic */,
+				7DB889D32AF524A300774446 /* Reachability */,
 			);
 			productName = MovieApp;
 			productReference = 7DE38A582AF2663C002D4C8A /* MovieApp.app */;
@@ -257,6 +260,7 @@
 			packageReferences = (
 				7DE38A892AF26BF0002D4C8A /* XCRemoteSwiftPackageReference "Alamofire" */,
 				7D0C179F2AF4364900261664 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				7DB889D22AF524A300774446 /* XCRemoteSwiftPackageReference "Reachability" */,
 			);
 			productRefGroup = 7DE38A592AF2663C002D4C8A /* Products */;
 			projectDirPath = "";
@@ -290,13 +294,13 @@
 				7D3939C72AF2A4D300F1729E /* MoviesTableView.swift in Sources */,
 				7D3939CB2AF2D35900F1729E /* CustomButton.swift in Sources */,
 				7DE38A832AF268BA002D4C8A /* MovieDetailsViewModel.swift in Sources */,
-				7DE38A602AF2663C002D4C8A /* ViewController.swift in Sources */,
 				7D3939B42AF26F1900F1729E /* Movies.swift in Sources */,
 				7DE38A732AF2674C002D4C8A /* HomeVC.swift in Sources */,
 				7DE38A802AF26895002D4C8A /* MovieDetailsVC.swift in Sources */,
 				7DE38A5C2AF2663C002D4C8A /* AppDelegate.swift in Sources */,
 				7D3939BE2AF286D000F1729E /* EndPoint.swift in Sources */,
 				7DE38A7E2AF26880002D4C8A /* HomeViewModel.swift in Sources */,
+				7DB889D62AF5693B00774446 /* HomeDetailsContracts.swift in Sources */,
 				7DE38A662AF2663C002D4C8A /* MovieApp.xcdatamodeld in Sources */,
 				7DC2FCC02AF31F9F005DF5F5 /* CoreDataManager.swift in Sources */,
 				7D3939C92AF2CCFB00F1729E /* HeaderView.swift in Sources */,
@@ -526,6 +530,14 @@
 				minimumVersion = 5.6.0;
 			};
 		};
+		7DB889D22AF524A300774446 /* XCRemoteSwiftPackageReference "Reachability" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ashleymills/Reachability.swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		7DE38A892AF26BF0002D4C8A /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -546,6 +558,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7D0C179F2AF4364900261664 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = "SnapKit-Dynamic";
+		};
+		7DB889D32AF524A300774446 /* Reachability */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7DB889D22AF524A300774446 /* XCRemoteSwiftPackageReference "Reachability" */;
+			productName = Reachability;
 		};
 		7DE38A8A2AF26BF0002D4C8A /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;

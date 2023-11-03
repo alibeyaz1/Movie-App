@@ -25,6 +25,7 @@ protocol MovieViewModelType: ViewModelType {
     init(apiManager: APIManager)
 }
 
+
 protocol MovieListItemDelegate: AnyObject {
     func selectedMovie(movie: Movie)
 }

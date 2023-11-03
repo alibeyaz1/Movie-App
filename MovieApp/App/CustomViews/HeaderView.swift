@@ -39,27 +39,37 @@ final class HeaderView: UIView {
         titleLabel.text = self.title
         titleLabel.font = UIFont.boldSystemFont(ofSize: 24)
         titleLabel.textColor = .black
+        titleLabel.numberOfLines = 0
+        titleLabel.textAlignment = .center
         self.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
+            make.top.equalTo(safeAreaLayoutGuide).offset(8)
             make.bottom.equalToSuperview().inset(12)
-            make.centerX.equalToSuperview()
+            make.horizontalEdges.equalToSuperview().inset(20)
         }
         
         
-        self.snp.makeConstraints { make in
-            make.height.equalTo(100)         }
+        if titleLabel.numberOfLines > 2 {
+            self.snp.makeConstraints { make in
+                make.height.equalTo(180)
+            }
+        }else{
+            self.snp.makeConstraints { make in
+                make.height.equalTo(140)
+            }
+        }
         
     }
     
     func setupBackButton(show: Bool) {
-        backButton.setImage(UIImage(systemName: "chevron.left"), for: .normal)
+        backButton.setImage(UIImage(named: "btn_back"), for: .normal)
         backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
         backButton.isHidden = !show
         self.addSubview(backButton)
         backButton.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(16)
             make.centerY.equalTo(titleLabel)
-            make.width.height.equalTo(24) 
+            make.width.height.equalTo(48) 
         }
     }
 }

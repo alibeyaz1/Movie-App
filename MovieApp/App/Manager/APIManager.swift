@@ -7,7 +7,7 @@
 
 import UIKit
 import Alamofire
-
+import Reachability
 
 protocol APIManagerProtocol {
     
@@ -17,15 +17,20 @@ protocol APIManagerProtocol {
 
 class APIManager: APIManagerProtocol {
     
+    var reachability : Reachability?
+    
     private var movieImages = [String: UIImage]()
     
+    // Load an image from a given URL.
     func loadImage(_ path: String, _ completion: @escaping(Result<UIImage,Error>) -> Void ) {
         let urlString = endPoint.urlStringForImages(path)
         
         if let image = movieImages[urlString] {
             completion(.success(image))
         }
-        
+        let configuration = URLSessionConfiguration.default
+        configuration.urlCache = nil
+        AF.session.configuration.requestCachePolicy = .reloadIgnoringCacheData
         AF.request( urlString, method: .get).response{ response in
             switch response.result {
             case .success(let data):
@@ -35,38 +40,47 @@ class APIManager: APIManagerProtocol {
                     return
                 }
             case .failure(let error):
-                guard (error as NSError).code == NSURLErrorCancelled else {
-                    completion(.failure(error.localizedDescription as! Error))
-                    return
-                }
+                print(error.localizedDescription)
             }
         }
     }
     
     private var endPoint = EndPoint()
     
+    // Fetch a list of movies by page number.
     func fetchMovies(byPage page: Int, completion: @escaping (Result<Movies, Error>) -> Void) {
-                let url = endPoint.urlStringForMovies(page)
-                executeRequest(url: url, onSuccess: completion)
+        let url = endPoint.urlStringForMovies(page)
+        executeRequest(url: url, onSuccess: completion)
     }
     
-    
+    //If there is an internet connection, current data is retrieved from the API. If there is no internet, the last data saved in CoreData is shown.
     private func executeRequest(url: String, onSuccess: @escaping (Result<Movies, Error>) -> Void)  {
-        AF.request(url)
-            .validate()
-            .responseDecodable(of: Movies.self, queue: .main, decoder: JSONDecoder()) { (response) in
-                
-                switch response.result {
-                case .success(let data):
-                    CoreDataManager.deleteAllMovies()
-                                    CoreDataManager.saveContext(movies: data)
-                    onSuccess(.success(data))
-                case .failure(let error):
-                    onSuccess(.failure(error))
-                    CoreDataManager.fetchPopulerMovies()
+        do {
+            self.reachability = try Reachability()
+        }
+        catch{
+            print(error)
+        }
+        if reachability?.connection == .unavailable{
+            
+            onSuccess(.success(CoreDataManager.fetchPopulerMovies()))
+        }
+        
+        else{
+            AF.request(url)
+                .validate()
+                .responseDecodable(of: Movies.self, queue: .main, decoder: JSONDecoder()) { (response) in
+                    
+                    switch response.result {
+                    case .success(let data):
+                        onSuccess(.success(data))
+                    case .failure(let error):
+                        onSuccess(.failure(error))
+                        
+                    }
                 }
-                
-            }
+            
+        }
         
         
     }

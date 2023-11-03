@@ -13,15 +13,16 @@ struct CoreDataManager{
     
     private static let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    public static func saveContext(movies: Movies){
+    // Function to save an array of Movie objects to Core Data
+    public static func saveContext(movies: [Movie]){
         var cachedMovies:[DataMovie] = []
-        for movie in movies.results{
+        for movie in movies{
             cachedMovies.append(encodeMovie(movie))
         }
         saveContext()
     }
     
-    
+    // Function to fetch and convert cached movies from Core Data to Movies object
     public static func fetchPopulerMovies() -> Movies{
         let movieListRequest: NSFetchRequest<DataMovie> = DataMovie.fetchRequest()
         do{
@@ -39,7 +40,7 @@ struct CoreDataManager{
             return Movies(results: [])
         }
     }
-    
+    // Function to delete all cached movies from Core Data
     public static func deleteAllMovies() {
         let movieListRequest: NSFetchRequest<DataMovie> = DataMovie.fetchRequest()
         
@@ -63,6 +64,7 @@ struct CoreDataManager{
         dataMovie.title = movie.title
         dataMovie.id = Int64(movie.id)
         dataMovie.overview = movie.overview
+        dataMovie.backdropPath = movie.backdropPath
         return dataMovie
     }
     
@@ -72,10 +74,12 @@ struct CoreDataManager{
                           releaseDate: dataMovie.releaseDate ?? "",
                           overview: dataMovie.overview ?? "" ,
                           posterImagePath: dataMovie.posterImagePath ?? "",
-                          voteAverage: dataMovie.voteAverage)
+                          voteAverage: dataMovie.voteAverage,
+                          backdropPath: dataMovie.backdropPath ?? "")
         return movie
     }
     
+    // Helper function to save changes to the Core Data context
     private static func saveContext(){
         do{
             try context.save()

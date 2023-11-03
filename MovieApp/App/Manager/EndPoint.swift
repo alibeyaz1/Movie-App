@@ -19,12 +19,13 @@ extension EndPoint {
     }
 }
 
+// Define the EndPoint struct to create URLs for movie data and images.
 struct EndPoint {
     func urlStringForMovies(_ page: Int) -> String {
         return       "\(API.BASE_URL.rawValue)\(API.popular.rawValue)\(API.api_key_text.rawValue)\(API.api_key.rawValue)\(API.language.rawValue)\(API.page.rawValue)\(page)"
         
     }
-    
+    // Generate a URL string for fetching a movie poster image.
     func urlStringForImages(_ patch: String) -> String  {
         return "\(API.IMAGE_BASE_URL.rawValue)\(patch)"
     }

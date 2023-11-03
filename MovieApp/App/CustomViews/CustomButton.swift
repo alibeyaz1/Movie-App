@@ -40,14 +40,14 @@ class CustomGradientButton: UIButton {
     
     func setupUI() {
         self.setTitle(self.title, for: .normal)
-        self.setTitleColor(.green, for: .normal)
+        self.setTitleColor(.systemGreen, for: .normal)
         self.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         self.backgroundColor = .clear
         self.layer.cornerRadius = 10
         self.backgroundColor = .white
         self.addDottedBorder()
         
-        iconImageView?.tintColor = .green
+        iconImageView?.tintColor = .systemGreen
         addSubview(iconImageView!)
         iconImageView!.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
@@ -57,7 +57,7 @@ class CustomGradientButton: UIButton {
     
     func addDottedBorder() {
         let borderLayer = CAShapeLayer()
-        borderLayer.strokeColor = UIColor.green.cgColor
+        borderLayer.strokeColor = UIColor.systemGreen.cgColor
         borderLayer.lineDashPattern = [10, 10]
         borderLayer.lineWidth = 1
         borderLayer.fillColor = nil

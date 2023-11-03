@@ -11,6 +11,8 @@ import SnapKit
 
 class MoviesTableViewCell : UITableViewCell{
     
+    // MARK: - UI Elements
+    
     let bgView = UIView()
     let movieImageView = UIImageView()
     let movieNameLabel = UILabel()
@@ -22,6 +24,8 @@ class MoviesTableViewCell : UITableViewCell{
     
     static let identifier = "MoviesCell"
     
+    // MARK: - Initialization
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
@@ -31,6 +35,8 @@ class MoviesTableViewCell : UITableViewCell{
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - View Setup
     
     private func setupViews(){
         
@@ -43,7 +49,7 @@ class MoviesTableViewCell : UITableViewCell{
         
         addSubview(bgView)
         bgView.snp.makeConstraints { make in
-            make.height.equalTo(150)
+            make.height.equalToSuperview().multipliedBy(0.75)
             make.left.equalToSuperview().offset(20)
             make.right.equalToSuperview().inset(20)
             make.bottom.equalToSuperview().offset(-12)
@@ -56,17 +62,18 @@ class MoviesTableViewCell : UITableViewCell{
         
         bgView.addSubview(movieImageView)
         movieImageView.snp.makeConstraints { make in
-            make.height.equalTo(160)
-            make.width.equalTo(120)
+            make.height.equalToSuperview()
+            make.width.equalToSuperview().multipliedBy(0.34)
             make.left.equalToSuperview().offset(16)
             make.bottom.equalToSuperview().inset(16)
         }
         
-        arrowButton.setImage(UIImage(systemName: "chevron.right" ), for: .normal)
+        arrowButton.setImage(UIImage(named: "btn_forward"), for: .normal)
         bgView.addSubview(arrowButton)
         arrowButton.snp.makeConstraints { make in
-            make.right.equalToSuperview().inset(16)
+            make.right.equalToSuperview()
             make.centerY.equalTo(bgView.snp.centerY)
+            make.height.equalToSuperview().multipliedBy(0.3)
         }
         
         
@@ -78,7 +85,7 @@ class MoviesTableViewCell : UITableViewCell{
         bgView.addSubview(movieNameLabel)
         movieNameLabel.snp.makeConstraints { make in
             make.left.equalTo(movieImageView.snp.right).offset(12)
-            make.centerY.equalTo(movieImageView.snp.centerY)
+            make.centerY.equalTo(movieImageView.snp.centerY).inset(12)
             make.right.equalTo(arrowButton.snp.left).offset(-8)
         }
         

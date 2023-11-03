@@ -9,9 +9,11 @@ import UIKit
 
 class HomeViewModel: MovieViewModelType {
     
+    // MARK: - Properties
+    
     var delegate: MovieViewModelDelegate?
     private let apiManager: APIManager
-    
+    var run : Bool = false
     required init(apiManager: APIManager){
         self.apiManager = apiManager
         bootstrap()
@@ -20,7 +22,7 @@ class HomeViewModel: MovieViewModelType {
     private var limit: Int = 100
     private var currentPage = 0
     
-    private var movies = [Movie](){
+    var movies = [Movie](){
         didSet {
             if self.count <= limit {
                 delegate?.moviesLoaded()
@@ -54,18 +56,23 @@ class HomeViewModel: MovieViewModelType {
             }
         }
     }
-    
+    //Data is retrieved from the API by making requests for as many movies as we want in the list. When enough data comes from the API, it saves it to CoreData.
     func fetchMovies() {
-        if currentPage < 6 {
+        if currentPage < 5 {
             currentPage += 1
             self.apiManager.fetchMovies(byPage: currentPage) { (result) in
                 switch result {
                 case .success(let movie):
                     self.movies.append(contentsOf: movie.results)
-                    CoreDataManager.saveContext(movies: movie)
                 case .failure(let error):
                     print("Error: \(error)")
                 }}}
+        
+        else if movies.count >= 100 && run == false{
+            CoreDataManager.saveContext(movies: self.movies)
+            run = true
+            
+        }
     }
 }
 
